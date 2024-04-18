@@ -1,4 +1,7 @@
-﻿export type TicketType = {
+import { createSlice } from '@reduxjs/toolkit'
+import type { PayloadAction } from '@reduxjs/toolkit'
+
+export type TicketType = {
   "origin": string,
   "origin_name": string,
   "destination": string,
@@ -12,11 +15,11 @@
   "price": number
 }
 
-export interface ITickets {
+export interface ITicketsState {
   tickets: Array<TicketType>;
 }
 
-export const DATA: ITickets = {
+const initialState: ITicketsState = {
   "tickets": [{
     "origin": "VVO",
     "origin_name": "Владивосток",
@@ -168,3 +171,19 @@ export const DATA: ITickets = {
       "price": 17400
     }]
 };
+
+export const ticketsSlice = createSlice({
+  name: 'tickets',
+  initialState,
+  reducers: {
+
+    getUSD:()=>{
+
+    }
+  },
+})
+
+// Action creators are generated for each case reducer function
+export const { getUSD } = ticketsSlice.actions
+
+export default ticketsSlice.reducer
