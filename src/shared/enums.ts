@@ -3,3 +3,9 @@ export enum StatusRequest{
   SUCCESS = 'completed',
   ERROR = 'error'
 }
+
+export enum CurrentCurrency{
+  RUB ='₽',
+  USD = '$',
+  EUR = '€'
+}

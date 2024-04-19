@@ -2,7 +2,12 @@ import React from "react";
 import {TicketInfo} from "../TicketInfo";
 import {TicketType} from "../../state/tickets";
 
-export const Ticket: React.FC<TicketType> = (props) => {
+interface IProps {
+  item: TicketType;
+  currency: string;
+}
+
+export const Ticket: React.FC<IProps> = ({item, currency}) => {
   const {
     origin_name,
     origin,
@@ -15,7 +20,7 @@ export const Ticket: React.FC<TicketType> = (props) => {
     // carrier,
     stops,
     price
-  } = props;
+  } = item;
 
   // const [currentPrice, setCurrentPrice] = useState(price);
   // const changeCurrencyUSD = () => {
@@ -29,7 +34,7 @@ export const Ticket: React.FC<TicketType> = (props) => {
         <img src="/turkish-airlines-logo.png" alt="logo" className={"w-40 h-25"}/>
 
         <button className={"bg-orange-500 p-2 rounded-md text-white text-center shadow-md pointer h-12"}>
-          <span>Купить за: {price} ₽</span>
+          <span>Купить за: {price} {currency}</span>
         </button>
       </div>
       <div className={"flex p-5 justify-between"}>
