@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState} from "react";
 import {TicketInfo} from "../TicketInfo";
 import {TicketType} from "../../state/tickets";
 
@@ -22,20 +22,31 @@ export const Ticket: React.FC<IProps> = ({item, currency}) => {
     price
   } = item;
 
-  // const [currentPrice, setCurrentPrice] = useState(price);
-  // const changeCurrencyUSD = () => {
-  //   setCurrentPrice((prev) => {
-  //     return Number((prev / 90).toFixed(2));
-  //   });
-  // };
+  const [sale, setSale] = useState(false);
+  const handlerSale = () => {
+    setSale(!sale);
+  };
   return (
     <div className={"flex mb-2 bg-white rounded-xl shadow-md"}>
-      <div className={"border-r-2 p-2"}>
+      <div className={"border-r-2 p-2 w-1/5"}>
         <img src="/turkish-airlines-logo.png" alt="logo" className={"w-40 h-25"}/>
 
-        <button className={"bg-orange-500 p-2 rounded-md text-white text-center shadow-md pointer h-12"}>
-          <span>Купить за: {price} {currency}</span>
-        </button>
+        {sale ? (
+          <button
+            onClick={handlerSale}
+            className={"border-2 border-orange-500 bg-white p-2 rounded-md text-orange-500 text-center shadow-md pointer h-12"}
+          >
+            <span className={'w-[90%] text-wrap'}>Билет забронирован</span>
+          </button>
+        ) : (
+          <button
+            onClick={handlerSale}
+            className={"bg-orange-500 p-2 rounded-md text-white text-center shadow-md pointer h-12"}
+          >
+            <span className={'w-[90%]'}>Купить за: {price} {currency}</span>
+          </button>
+        )}
+
       </div>
       <div className={"flex p-5 justify-between"}>
         <TicketInfo
