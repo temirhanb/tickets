@@ -1,0 +1,29 @@
+#input--currency-checkbox {
+    display: none;
+}
+
+#div--currency-checkbox {
+    padding: 1rem;
+    border: 2px solid rgb(100 116 139);;
+}
+
+#div--currency-checkbox:hover {
+    border-color:rgb(125 211 252);
+    background-color: rgb(224 242 254);
+    cursor: pointer;
+}
+
+#div--currency-checkbox:last-child {
+    border-top-right-radius: .5rem;
+    border-bottom-right-radius: .5rem;
+}
+
+#div--currency-checkbox:nth-child(2) {
+    border-top-left-radius: .5rem;
+    border-bottom-left-radius: .5rem;
+}
+
+#input--currency-checkbox:checked + #div--currency-checkbox {
+    background-color: white;
+    border-color: rgb(14 165 233);
+}
