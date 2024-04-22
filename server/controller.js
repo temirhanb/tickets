@@ -14,11 +14,33 @@ export const getAll = (req, res) => {
 };
 
 export const filterTickets = (req, res) => {
-  const currency = req.body.currency;
 
-  console.log();
+  const currency = req.body.currency;
+  const stops = req.body.stops;
+
+  if (stops.length === 0) {
+    res.status(201).json({
+      models: db.map((item) => {
+        if (currency === "USD") return {...item, price: Number((item.price / 80).toFixed(2))};
+        else if (currency === "EUR") return {...item, price: Number((item.price / 90).toFixed(2))};
+        else return {...item};
+      }),
+      currency
+    });
+  }
+
+  const filteredTickets = [];
+
+  db.forEach(item => {
+    for (let key in stops) {
+      if (item.stops === Number(stops[key])) {
+        return filteredTickets.push(item);
+      }
+    }
+  });
+
   res.status(201).json({
-    models: db.map((item) => {
+    models: filteredTickets.map((item) => {
       if (currency === "USD") return {...item, price: Number((item.price / 80).toFixed(2))};
       else if (currency === "EUR") return {...item, price: Number((item.price / 90).toFixed(2))};
       else return {...item};

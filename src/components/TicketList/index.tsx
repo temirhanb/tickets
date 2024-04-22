@@ -13,7 +13,7 @@ export const TicketList = () => {
   }, [dispatch]);
 
   return (
-    <div className={"w-2/3"}>
+    <div className={"w-2/4"}>
       {tickets.map((item, index) => <Ticket
         key={index}
         currency={currency}

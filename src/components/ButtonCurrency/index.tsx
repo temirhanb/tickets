@@ -11,7 +11,6 @@ export const ButtonCurrency: React.FC<IProps> = (
   {changeCurrency, currentCurrency, checkCurrency}
 ) => {
 
-  console.log(currentCurrency === checkCurrency);
   return (
     <>
       <input

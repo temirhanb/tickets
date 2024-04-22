@@ -27,28 +27,28 @@ export const Ticket: React.FC<IProps> = ({item, currency}) => {
     setSale(!sale);
   };
   return (
-    <div className={"flex mb-2 bg-white rounded-xl shadow-md"}>
-      <div className={"border-r-2 p-2 w-1/5"}>
+    <div className={"flex mb-2 bg-white rounded-xl h-60 shadow-md"}>
+      <div className={"border-r-2 p-2 w-1/2 flex flex-col items-center"}>
         <img src="/turkish-airlines-logo.png" alt="logo" className={"w-40 h-25"}/>
 
         {sale ? (
           <button
             onClick={handlerSale}
-            className={"border-2 border-orange-500 bg-white p-2 rounded-md text-orange-500 text-center shadow-md pointer h-12"}
+            className={"border-2 h-14 border-orange-500 bg-white p-2 rounded-md text-orange-500 text-center shadow-md pointer h-12"}
           >
             <span className={'w-[90%] text-wrap'}>Билет забронирован</span>
           </button>
         ) : (
           <button
             onClick={handlerSale}
-            className={"bg-orange-500 p-2 rounded-md text-white text-center shadow-md pointer h-12"}
+            className={"bg-orange-500 p-2 h-14 rounded-md text-white text-center shadow-md pointer h-12"}
           >
             <span className={'w-[90%]'}>Купить за: {price} {currency}</span>
           </button>
         )}
 
       </div>
-      <div className={"flex p-5 justify-between"}>
+      <div className={"grid grid-cols-3 p-5 w-[100%]"}>
         <TicketInfo
           date={departure_date}
           origin={origin}
