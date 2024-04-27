@@ -10,10 +10,7 @@ app.use(express.static('public'));
 app.use(express.json());
 app.use(express.urlencoded({extended: false}));
 app.use(router);
-ViteExpress.config({ mode: "production" })
 
 app.listen(PORT, () => {
   console.log('Server start on port: ' + PORT);
 });
-
-ViteExpress.listen(app, PORT, () => console.log("Server is listening..."));
